@@ -72,7 +72,7 @@ def get_all_players(connection):
 
     # append order details in each order
     for record in response:
-        record['order_details'] = get_player_details(connection, record['player_id'])
+        record['player_details'] = get_player_details(connection, record['player_id'])
 
     return response
 
