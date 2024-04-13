@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> IPL Management </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="csrf-token" content="kmapods5wQ5L1hn7rcR9OPst7EsN0gC7SrHh3m9K"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,300,600,700">
+    <link media="all" type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
+    <link media="all" type="text/css" rel="stylesheet" href="css/style.css?v=1.0">
+    <link media="all" type="text/css" rel="stylesheet" href="css/sidebar-menu.css?v=1.0">
+    <link media="all" type="text/css" rel="stylesheet" href="css/custom.css?v=1.3.3">
+</head>
+<body class="tooltips">
+    <div class="container">
+        <div class="header content rows-content-header">
+            <button class="button-menu-mobile show-sidebar">
+                <i class="fa fa-bars"></i>
+            </button>
+            <div class="navbar navbar-default" role="navigation">
+                <div class="container">
+                    <div class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav visible-lg visible-md limit-chars">
+                            <ul class="breadcrumb">
+                                <a href="index.html">
+                                    <i class="zmdi zmdi-view-dashboard zmdi-hc-fw" title="Country"></i>
+                                </a>
+                                <a href="country.html">
+                                    <i class="zmdi zmdi-assignment zmdi-hc-fw" title="Players"></i>
+                                </a>
+                            </ul>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="right content-page">
+            <div class="body content rows scroll-y">
+                <form class="form-horizontal" action="">
+                    <div class="box-info full" id="taskFormContainer">
+                        <h2>IPL Management System</h2>
+                        <div class="panel-body pt-0">
+                            <div class="row mb-4">
+                                <div class="col-sm-12">
+                                    <a href="Player.html" class="btn btn-sm btn-primary pull-right ml-3">
+                                        New Players
+                                    </a>
+                                    <a href="Country.html" class="btn btn-sm btn-primary pull-right">
+                                        Players and Franchise
+                                    </a>
+                                    <!-- Button to trigger the modal -->
+                                    <button type="button" class="btn btn-sm btn-primary pull-right" data-toggle="modal" data-target="#addTeamModal">
+                                        Add New Team
+                                    </button>
+                                </div>
+                            </div>
+                            <table class="table table-bordered">
+                                <thead>
+                                    <th>team id</th>
+                                    <th>team name</th>
+                                    <th>total purse</th>
+                                    <th>total players</th>
+                                    <th>team owner</th>
+                                </thead>
+                                <tbody>
+                                    <!-- Table rows for existing teams (code not shown here) -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </form>
+                <div class="modal " id="userProfileModal" role="dialog" >
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-body text-center">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal for adding new team -->
+        <div class="modal fade" id="addTeamModal" role="dialog">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Add New Team</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="addTeamForm">
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">Team ID:</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" id="team_id" name="team_id" placeholder="Enter Team ID">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">Team Name:</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" id="team_name" name="team_name" placeholder="Enter Team Name">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">Total Players:</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" id="total_players" name="total_players" placeholder="Enter Total Players">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">Team Owner:</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" id="team_owner" name="team_owner" placeholder="Enter Team Owner">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">Total Purse:</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" id="total_purse" name="total_purse" placeholder="Enter Total Purse">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" id="addTeamBtn">Add Team</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+    
+<script src="js/packages/jquery.min.js"></script>
+<script src="js/custom/common.js"></script>
+<script src="js/custom/dashboard.js"></script>
+<script>
+    $(document).ready(function() {
+        // Add Team Button Click Event
+        $("#addTeamBtn").click(function() {
+            // Code to handle adding new team goes here
+            // You can use AJAX to send the form data to the server and handle the response
+            // For example:
+             $.ajax({
+                 type: "POST",
+                 url: "add_team.php", // URL to handle the form submission
+                 data: $("#addTeamForm").serialize(), // Serialize form data
+                 success: function(response) {
+                     // Handle the response here, e.g., display a success message
+                     alert("Team added successfully!");
+                 },
+                 error: function(xhr, status, error) {
+                     // Handle errors here, e.g., display an error message
+                     console.error(xhr.responseText);
+                 }
+             });
+        });
+    });
+</script>
+</html>
